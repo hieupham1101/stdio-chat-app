@@ -9,12 +9,10 @@ declare module 'MyModels' {
     user: User
     error: string
   }
-
   export type UserCredentials = {
     email: string
     password: string
   }
-
   export type UserRegister = {
     username: string
     email: string

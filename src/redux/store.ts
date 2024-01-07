@@ -1,8 +1,13 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
 import { useDispatch } from 'react-redux'
+import authReducer from '~/pages/Auth/authSlice'
 
 const store = configureStore({
-  reducer: {}
+  reducer: {
+    auth: authReducer
+  },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
+  devTools: true
 })
 
 export type AppDispatch = typeof store.dispatch
