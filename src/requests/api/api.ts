@@ -30,6 +30,7 @@ export class Api {
   protected static _skipVersion: boolean
   protected static _authService: typeof AuthService
   protected static _requiredAuth: boolean | undefined
+  static interceptors: any
 
   public static config({
     baseUrl,

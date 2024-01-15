@@ -25,7 +25,6 @@ export class AuthService {
   protected _refreshToken: string | null = null;
 
   protected static _instance: AuthService;
-
   protected static instance(): AuthService {
     if (!this._instance) {
       this._instance = new this();
