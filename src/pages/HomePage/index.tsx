@@ -1,5 +1,5 @@
-import Header from '../../components/Header/index.tsx'
-import Sidebar from '../../components/Sidebar/index.tsx'
+import Header from '../../components/Header/index';
+import Sidebar from '../../components/Sidebar/index';
 
 function HomePage() {
   return (
@@ -12,7 +12,7 @@ function HomePage() {
         <Sidebar />
       </div>
     </div>
-  )
+  );
 }
 
-export default HomePage
+export default HomePage;
