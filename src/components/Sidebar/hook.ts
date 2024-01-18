@@ -1,11 +1,17 @@
-import { ReceivedProps } from './type'
+import { useRequest } from '../../hook/useRequest';
+import { ReceivedProps } from './type';
+import { createDialog } from '../../requests/dialogRequest';
 
 const useSidebar = (props: ReceivedProps) => {
-  const a = 10
+  const { isLoading, mutate, isError } = useRequest(createDialog, {
+    onSuccess: (accessToken) => {
+      console.log('endpoint', accessToken);
+    },
+  });
+
   return {
     ...props,
-    a
-  }
-}
-export type Props = ReturnType<typeof useSidebar>
-export default useSidebar
+  };
+};
+export type Props = ReturnType<typeof useSidebar>;
+export default useSidebar;
