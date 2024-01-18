@@ -20,14 +20,14 @@ const SignupLayout = (props) => {
         }}
       >
         <div className='rounded-xl bg-[#FFFF] md:w-[430px] max-sm:w-[350px] bg-opacity-50 px-8 py-10 shadow-lg backdrop-blur-sm max-sm:px-8'>
-          {/* <div className='flex items-center justify-center h-[50px]'>
+          <div className='flex items-center justify-center h-[50px]'>
             <img
               src={logo}
               width={130}
               height={50}
               alt='Picture of the author'
             />
-          </div> */}
+          </div>
           <div className='text-white w-full'>
             <div className='mb-8 flex flex-col items-center'>
               <h4 className='mb-2 mt-2 text-[16px] text-center text-[#564f4e]'>

@@ -35,8 +35,11 @@ export interface IRequestProps {
 
 export interface IRequestBody {
   data?: TObject;
-  onUploadProgress?: AxiosRequestConfig['onUploadProgress'];
+  code? : string;
+  status? :boolean;
+  message?: string;
 }
+
 
 export interface IRequestParams {
   params?: TObject;
@@ -57,3 +60,4 @@ export interface IErrorProps {
 export interface IApiRequestProps {
   signal?: AxiosRequestConfig['signal'];
 }
+
