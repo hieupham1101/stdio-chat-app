@@ -1,5 +1,7 @@
 import { Api } from './api/api';
 
+console.log('env', import.meta.env);
+
 Api.config({
   skipVersion: true,
   storage: localStorage,
