@@ -16,18 +16,24 @@ import Edit from '../../assets/images/Frame 23.svg';
 import { useState } from 'react';
 
 const SidebarLayout = (Props: any) => {
-  const [showMore, setShowMore] = useState(false);
+  const [showMoreChannel, setShowMoreChannel] = useState(false);
+  const [showMoreMessages, setShowMoreMessages] = useState(false);
+  const [showMoreApps, setShowMoreApps] = useState(false);
 
-  const handleShowMore = () => {
-    if (!showMore) {
-      setShowMore(true);
-      console.log(showMore);
-    } else {
-      setShowMore(false);
-      console.log(showMore);
+  const handleShowMore = (target: string) => {
+    // setShowMoreChannel(false);
+    // setShowMoreMessages(false);
+    // setShowMoreApps(false);
+
+    if (target === 'channels') {
+      setShowMoreChannel(!showMoreChannel);
+    } else if (target === 'messages') {
+      setShowMoreMessages(!showMoreMessages);
+    } else if (target === 'apps') {
+      setShowMoreApps(!showMoreApps);
     }
   };
-  console.log('data', Props);
+
   return (
     <div className='sidebar'>
       <div className='sidebar-header'>
@@ -37,25 +43,24 @@ const SidebarLayout = (Props: any) => {
             <DownOutlined className='w-[8.12px] h-[4.74px] ml-1' />
           </h3>
         </div>
-        {/* <EditOutlined className='sidebar-edit' /> */}
         <img src={Edit} alt='' className='w-[34px]' />
       </div>
 
       <div className='sidebar-body'>
         <div className='sidebar-body-cate'>
-          <div className='sidebar-item'>
+          <div className='sidebar-item hover:bg-[#1164a3] rounded-md cursor-pointer'>
             <img src={Canvases} alt='' className='h-[18px]' />
             <h4>Canvases</h4>
           </div>
-          <div className='sidebar-item'>
+          <div className='sidebar-item hover:bg-[#1164a3] rounded-md cursor-pointer'>
             <img src={SlackConnect} alt='' className='h-[18px]' />
             <h4>Slack Connect</h4>
           </div>
-          <div className='sidebar-item'>
+          <div className='sidebar-item hover:bg-[#1164a3] rounded-md cursor-pointer'>
             <img src={File} alt='' className='h-[18px]' />
             <h4>Files</h4>
           </div>
-          <div className='sidebar-item'>
+          <div className='sidebar-item hover:bg-[#1164a3] rounded-md cursor-pointer'>
             <img src={ThreeDot} alt='' className='h-[18px]' />
             <h4>Browse Slack</h4>
           </div>
@@ -63,43 +68,43 @@ const SidebarLayout = (Props: any) => {
         <div className='sidebar-body-channels'>
           <div
             className='item-header hover:cursor-pointer'
-            onClick={handleShowMore}
+            onClick={() => handleShowMore('channels')}
           >
             <img src={CaretDown} alt='' className='h-[26px]' />
             Channels
           </div>
 
-          {!showMore && (
+          {!showMoreChannel && (
             <>
-              <div className='sidebar-item'>
+              <div className='sidebar-item hover:bg-[#1164a3] rounded-md cursor-pointer'>
                 <img src={Hastag} className='h-[18px]' />
                 general
               </div>
-              <div className='sidebar-item'>
+              <div className='sidebar-item hover:bg-[#1164a3] rounded-md cursor-pointer'>
                 <img src={Hastag} className='h-[18px]' />
                 marketing
               </div>
-              <div className='sidebar-item'>
+              <div className='sidebar-item hover:bg-[#1164a3] rounded-md cursor-pointer'>
                 <img src={Hastag} className='h-[18px]' />
                 product
               </div>
-              <div className='sidebar-item'>
+              <div className='sidebar-item hover:bg-[#1164a3] rounded-md cursor-pointer'>
                 <img src={Hastag} className='h-[18px]' />
                 sales
               </div>
-              <div className='sidebar-item'>
+              <div className='sidebar-item hover:bg-[#1164a3] rounded-md cursor-pointer'>
                 <img src={Hastag} className='h-[18px]' />
                 operations
               </div>
-              <div className='sidebar-item'>
+              <div className='sidebar-item hover:bg-[#1164a3] rounded-md cursor-pointer'>
                 <img src={Lock} alt='' className='h-[18px]' />
                 fundraising
               </div>
-              <div className='sidebar-item'>
+              <div className='sidebar-item hover:bg-[#1164a3] rounded-md cursor-pointer'>
                 <img src={Lock} alt='' className='h-[18px]' />
                 leadership
               </div>
-              <div className='sidebar-add_channels'>
+              <div className='sidebar-add_channels cursor-pointer'>
                 <span className='add-channels'>+</span>
                 Add channels
               </div>
@@ -109,118 +114,125 @@ const SidebarLayout = (Props: any) => {
         <div className='sidebar-body-messages'>
           <div
             className='item-header hover:cursor-pointer'
-            // onClick={handleShowMore}
+            onClick={() => handleShowMore('messages')}
           >
             <img src={CaretDown} alt='' className='h-[26px]' />
             Direct messages
           </div>
-          {/* {!showMore && (
-            <> */}
-          <div className='sidebar-item'>
-            <div className='item-user'>
-              <img src={Avatar} alt='' className='' />
-              <div className='item-user-status'>
-                <img src={Status} alt='' />
+          {!showMoreMessages && (
+            <>
+              <div className='sidebar-item hover:bg-[#1164a3] rounded-md cursor-pointer'>
+                <div className='item-user'>
+                  <img src={Avatar} alt='' className='' />
+                  <div className='item-user-status'>
+                    <img src={Status} alt='' />
+                  </div>
+                </div>
+                Slackbot
               </div>
-            </div>
-            Slackbot
-          </div>
-          <div className='sidebar-item'>
-            <div className='item-user'>
-              <img src={Avatar} alt='' className='' />
-              <div className='item-user-status'>
-                <img src={Status} alt='' />
+              <div className='sidebar-item hover:bg-[#1164a3] rounded-md cursor-pointer'>
+                <div className='item-user'>
+                  <img src={Avatar} alt='' className='' />
+                  <div className='item-user-status'>
+                    <img src={Status} alt='' />
+                  </div>
+                </div>
+                Ali Sarraf
+                <p>you</p>
               </div>
-            </div>
-            Ali Sarraf
-            <p>you</p>
-          </div>
-          <div className='sidebar-item sidebar-active'>
-            <div className='item-user'>
-              <img src={Avatar} alt='' className='' />
-              <div className='item-user-status'>
-                <img src={Status} alt='' />
+              <div className='sidebar-item hover:bg-[#1164a3] rounded-md cursor-pointer'>
+                <div className='item-user'>
+                  <img src={Avatar} alt='' className='' />
+                  <div className='item-user-status'>
+                    <img src={Status} alt='' />
+                  </div>
+                </div>
+                Decio Emanuel
               </div>
-            </div>
-            Decio Emanuel
-          </div>
-          <div className='sidebar-item'>
-            <div className='item-user'>
-              <img src={Avatar} alt='' className='' />
-              <div className='item-user-status'>
-                <img src={Status} alt='' />
+              <div className='sidebar-item hover:bg-[#1164a3] rounded-md cursor-pointer'>
+                <div className='item-user'>
+                  <img src={Avatar} alt='' className='' />
+                  <div className='item-user-status'>
+                    <img src={Status} alt='' />
+                  </div>
+                </div>
+                Slackbot
               </div>
-            </div>
-            Slackbot
-          </div>
-          <div className='sidebar-item'>
-            <div className='item-user'>
-              <img src={Avatar} alt='' className='' />
-              <div className='item-user-status'>
-                <img src={Status} alt='' />
+              <div className='sidebar-item hover:bg-[#1164a3] rounded-md cursor-pointer'>
+                <div className='item-user'>
+                  <img src={Avatar} alt='' className='' />
+                  <div className='item-user-status'>
+                    <img src={Status} alt='' />
+                  </div>
+                </div>
+                Slackbot
               </div>
-            </div>
-            Slackbot
-          </div>
-          <div className='sidebar-item'>
-            <div className='item-user'>
-              <img src={Avatar} alt='' className='' />
-              <div className='item-user-status'>
-                <img src={Status} alt='' />
+              <div className='sidebar-item hover:bg-[#1164a3] rounded-md cursor-pointer'>
+                <div className='item-user'>
+                  <img src={Avatar} alt='' className='' />
+                  <div className='item-user-status'>
+                    <img src={Status} alt='' />
+                  </div>
+                </div>
+                Slackbot
               </div>
-            </div>
-            Slackbot
-          </div>
-          <div className='sidebar-item'>
-            <div className='item-user'>
-              <img src={Avatar} alt='' className='' />
-              <div className='item-user-status'>
-                <img src={Status} alt='' />
+              <div className='sidebar-item hover:bg-[#1164a3] rounded-md cursor-pointer'>
+                <div className='item-user'>
+                  <img src={Avatar} alt='' className='' />
+                  <div className='item-user-status'>
+                    <img src={Status} alt='' />
+                  </div>
+                </div>
+                Slackbot
               </div>
-            </div>
-            Slackbot
-          </div>
-          <div className='sidebar-item'>
-            <div className='item-user'>
-              <img src={Avatar} alt='' className='' />
-              <div className='item-user-status'>
-                <img src={Status} alt='' />
+              <div className='sidebar-item hover:bg-[#1164a3] rounded-md cursor-pointer'>
+                <div className='item-user'>
+                  <img src={Avatar} alt='' className='' />
+                  <div className='item-user-status'>
+                    <img src={Status} alt='' />
+                  </div>
+                </div>
+                Slackbot
               </div>
-            </div>
-            Slackbot
-          </div>
-          <div className='sidebar-item'>
-            <div className='item-user'>
-              <img src={Avatar} alt='' className='' />
-              <div className='item-user-status'>
-                <img src={Status} alt='' />
+              <div className='sidebar-item hover:bg-[#1164a3] rounded-md cursor-pointer'>
+                <div className='item-user'>
+                  <img src={Avatar} alt='' className='' />
+                  <div className='item-user-status'>
+                    <img src={Status} alt='' />
+                  </div>
+                </div>
+                Slackbot
               </div>
-            </div>
-            Slackbot
-          </div>
-          <div className='sidebar-add_channels'>
-            <span className='add-channels'>+</span>
-            Add channels
-          </div>
-          {/* </>
-          )} */}
+              <div className='sidebar-add_channels cursor-pointer'>
+                <span className='add-channels'>+</span>
+                Add channels
+              </div>
+            </>
+          )}
         </div>
         <div className='sidebar-body-apps'>
-          <div className='item-header'>
+          <div
+            className='item-header cursor-pointer'
+            onClick={() => handleShowMore('apps')}
+          >
             <img src={CaretDown} alt='' className='h-[26px]' />
             Apps
           </div>
-          <div className='sidebar-item'>
-            <div className='item-app'>
-              <img src={Avatar} alt='' />
-              Good App
-            </div>
-            <div className='sidebar-app_noti'>1</div>
-          </div>
-          <div className='sidebar-add_channels'>
-            <span className='add-channels'>+</span>
-            Add apps
-          </div>
+          {!showMoreApps && (
+            <>
+              <div className='sidebar-item hover:bg-[#1164a3] rounded-md cursor-pointer'>
+                <div className='item-app'>
+                  <img src={Avatar} alt='' />
+                  Good App
+                </div>
+                <div className='sidebar-app_noti'>1</div>
+              </div>
+              <div className='sidebar-add_channels cursor-pointer'>
+                <span className='add-channels'>+</span>
+                Add apps
+              </div>
+            </>
+          )}
         </div>
       </div>
       <div className='sidebar-footer'>
