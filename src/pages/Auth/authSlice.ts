@@ -1,4 +1,6 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { UserCredentials, User, AuthState } from 'MyModels';
+import { signInApi } from 'requests/authRequest';
 
 const authSlice = createSlice({
   name: 'auth',

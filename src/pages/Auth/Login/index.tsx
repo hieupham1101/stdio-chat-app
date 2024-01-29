@@ -1,12 +1,15 @@
-import useLogin from './hook';
+import useLogin, { Props } from './hook';
 import { ReceivedProps } from './type';
 import { Button } from 'antd';
 import logo from '../../../assets/images/logo.svg';
 import { useState } from 'react';
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+import React from 'react';
+import { loginSchemaObject, ValidationSchemaType } from './validate';
+import { SubmitHandler } from 'react-hook-form';
 
-const LoginLayout = () => {
+const LoginLayout = ({ isLoading, mutate, isError, isSuccess }: Props) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -15,14 +18,18 @@ const LoginLayout = () => {
   });
   const { email, password } = formData;
 
-  const onChange = (e: any) => {
+  const { register, handleSubmit, errors } = loginSchemaObject();
+
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prevState) => ({
       ...prevState,
-      [e.target.id]: e.target.value,
+      [event.target.id]: event.target.value,
     }));
   };
 
-  
+  const onSubmit: SubmitHandler<ValidationSchemaType> = () => {
+    mutate({ ...formData });
+  };
 
   return (
     <section>
@@ -48,28 +55,35 @@ const LoginLayout = () => {
               </h4>
             </div>
             <form>
-              <div className='mb-4 text-lg w-full'>
+              <div className='mb-4 text-lg w-full '>
                 <input
                   className='rounded-md text-base border-none w-full bg-[#e6e6e6] bg-opacity-50 px-6 py-2 text-center text-[#6b6260]  placeholder-[#6b6260] outline-none backdrop-blur-md'
                   type='text'
-                  name='email'
                   id='email'
                   autoComplete='false'
-                  value={email}
-                  onChange={onChange}
+                  value={formData.email}
                   placeholder='Enter your email address'
+                  {...register('email')}
+                  onChange={onChange}
+                  name='email'
                 />
+                {errors.email && (
+                  <span className='text-red-500 text-[14px]'>
+                    {errors.email?.message}
+                  </span>
+                )}
               </div>
-              <div className='mb-4 text-lg relative '>
+              <div className='mb-5 text-lg relative '>
                 <input
                   className='rounded-md text-base border-none w-full bg-[#e6e6e6] bg-opacity-50 px-6 py-2 text-center text-[#6b6260] placeholder-[#6b6260] outline-none backdrop-blur-md'
                   type={showPassword ? 'text' : 'password'}
-                  value={password}
+                  value={formData.password}
                   id='password'
-                  onChange={onChange}
-                  name='password'
                   placeholder='Enter your password'
                   autoComplete='false'
+                  {...register('password')}
+                  onChange={onChange}
+                  name='password'
                 />
                 {showPassword ? (
                   <EyeOutlined
@@ -82,13 +96,19 @@ const LoginLayout = () => {
                     onClick={() => setShowPassword((prevState) => !prevState)}
                   />
                 )}
+                {errors.password && (
+                  <span className='text-red-500 text-[14px]'>
+                    {errors.password?.message}
+                  </span>
+                )}
               </div>
               <div className='my-8 flex justify-center text-lg text-black'>
                 <Button
                   htmlType='submit'
                   size='large'
-                  // loading={isSubmitting}
                   className='bg-black w-[200px] bg-opacity-50 border-none !text-white hover:bg-[#4f4746]'
+                  loading={isLoading}
+                  onClick={handleSubmit(onSubmit)}
                 >
                   Log in
                 </Button>
