@@ -18,7 +18,7 @@ interface IAuthServiceStatic {
   setRefreshToken: (params: string) => Promise<string>;
 }
 
-// @staticImplements<IAuthServiceStatic>()
+staticImplements<IAuthServiceStatic>();
 export class AuthService {
   protected _storage?: Storage;
   protected _token: string | null = null;

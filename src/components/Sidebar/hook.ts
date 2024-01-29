@@ -1,4 +1,3 @@
-import { useRequest } from '../../hook/useRequest';
 import { ReceivedProps } from './type';
 import { createDialog, getAllDialog } from '../../requests/dialogRequest';
 
@@ -20,6 +19,7 @@ const useSidebar = (props: ReceivedProps) => {
   //     },
   //   },
   // );
+  
 
   return {
     ...props,
