@@ -27,7 +27,7 @@ const SidebarLayout = (Props: any) => {
       console.log(showMore);
     }
   };
-  console.log('data', Props);
+
   return (
     <div className='sidebar'>
       <div className='sidebar-header'>
@@ -223,7 +223,7 @@ const SidebarLayout = (Props: any) => {
           </div>
         </div>
       </div>
-      <div className='sidebar-footer'>
+      {/* <div className='sidebar-footer'>
         <div className='sidebar-footer-profile'>
           <h3>Decio Emanuel</h3>
           <DownOutlined className='w-[8.12px] h-[4.74px] ml-1 ' />
@@ -232,12 +232,11 @@ const SidebarLayout = (Props: any) => {
           <div className='elipse'></div>
           <img src={Huddle} alt='' />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
 const Sidebar = (props: ReceivedProps) => {
-  console.log('ssad', props);
   return <SidebarLayout {...useSidebar(props)} />;
 };
 export default Sidebar;
