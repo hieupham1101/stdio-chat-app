@@ -20,7 +20,10 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "baseUrl": "src"
+    "baseUrl": "src",
+    "paths": {
+      "@/*": ["./*"]
+    }
   },
   "exclude": ["**/dist/*", "**/node_modules/*", "scripts/*"],
   "include": ["src", "global.d.ts"]

@@ -8,10 +8,6 @@ import {
   QuestionCircleOutlined,
 } from '@ant-design/icons';
 import './index.scss';
-import { useRequest } from '../../hook/useRequest';
-import { logOutApi } from '../../requests/authRequest';
-import queryString from 'query-string';
-import { useLocation, useNavigate } from 'react-router';
 import { useState } from 'react';
 import Popper from '../Popper/index';
 
@@ -41,7 +37,6 @@ const HeaderLayout = () => {
         />
         {!popperVisible && <Popper />}
       </div>
-      <button onClick={onSubmit}>Log Out</button>
     </div>
   );
 };

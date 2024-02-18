@@ -1,35 +1,27 @@
-import { PrepareAction, createAction, createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { UserModel } from '../../redux/type/userModels';
-import { persistUser, readUser } from '../../services/localStorage.service';
 
-export interface UserState {
-  user: UserModel | null;
-}
-
-const initialState: UserState = {
-  user: readUser(),
-};
-
-export const setUser = createAction<PrepareAction<UserModel>>(
-  'user/setUser',
-  (newUser) => {
-    persistUser(newUser);
-
-    return {
-      payload: newUser,
-    };
+const initialState: UserModel = {
+  id: 0,
+  name: '',
+  email: '',
+  dob: '',
+  supervisor_id: 0,
+  supervisor: {
+    id: '',
+    name: '',
   },
-);
+};
 
 export const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {},
-  extraReducers: (builder) => {
-    builder.addCase(setUser, (state, action) => {
-      state.user = action.payload;
-    });
+  reducers: {
+    setUser(state, action: PayloadAction<UserModel>) {
+      return action.payload;
+    },
   },
 });
 
+export const userAction = userSlice.actions;
 export default userSlice.reducer;

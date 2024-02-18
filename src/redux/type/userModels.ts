@@ -1,5 +1,4 @@
 export interface UserModel {
-  data: any;
   id: number;
   name: string;
   email: string;
