@@ -5,13 +5,13 @@ import { Button } from 'antd';
 
 function HomePage() {
   return (
-    <div className='bg-[#3F0340]'>
+    <div>
       <Header />
       <div className='flex'>
         <div>
           <Sidebar />
         </div>
-        <div className='bg-black'>
+        <div>
           <Content />
         </div>
       </div>
